@@ -1,28 +1,46 @@
-#' plot_palette
+#' social_palette
 #'
-#' `plot_palette` function generates a barplot to visualize the palette colors
-#'
-#' @param palette A vector of colors
-#' @return A default R barplot
+#' Palette with colors taken from social media logos
 #'
 #' @export
-#' 
-plot_palette <- function(palette) {
-  barplot(1:length(palette), col=palette)
-}
 
-#' make_coolors_url
+social_palette <- c(
+  "#FB3958",
+  "#FFC838",
+  "#6DC993",
+  "#458EFF",
+  "#DED1C1",
+  "#8134AF",
+  "#CCCCFF",
+  "#AAD450",
+  "#9B6954",
+  "#DD4B39",
+  "#128C7E",
+  "#F58529",
+  "#007BB6",
+  "#EA4C89",
+  "#00ACED",
+  "#BB0000",
+  "#9E9E9E",
+  "#FEDA77",
+  "#515BD4",
+  "#9146FF",
+  "#34526F",
+  "#C32AA3",
+  "#DCF8C6",
+  "#1ED760",
+  "#A6B1B7",
+  "#00A7CE",
+  "#F94877",
+  "#7289DA",
+  "#F40083"
+)
+
+#' boolean_palette
 #'
-#' `make_coolors_url` function generates string
-#' to use with the website coolors.co, which generates
-#' aesthetically pleasing color palettes
-#'
-#' @param palette A vector of colors
-#' @return A string that is a valid URL to paste into a browser
+#' Red/grey palette named vector for boolean variables
 #'
 #' @export
-#' 
-make_coolors_url <- function(palette) {
-  palette_clean <- map_chr(palette, str_sub, start = 2)
-  paste0("https://coolors.co/", paste0(palette_clean, collapse = "-"))
-}
+
+boolean_palette <- c(`TRUE` = "red", `FALSE` = "grey")
+

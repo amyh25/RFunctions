@@ -1,4 +1,4 @@
-#' @name my_theme
+#' my_theme
 #' @return my_theme with modifications of my preferences
 #' @export
 
@@ -11,7 +11,7 @@ my_theme <- function(...) {
   )
 }
 
-#' @name theme_presentation
+#' theme_presentation
 #' 
 #' @return my_theme with size modifications for presentations
 #' 
@@ -23,7 +23,7 @@ theme_presentation <- function() {
   )
 }
 
-#' @name theme_poster
+#' theme_poster
 #' 
 #' @return my_theme with size modifications for poster
 #' 
@@ -31,11 +31,11 @@ theme_presentation <- function() {
 
 theme_poster <- function() {
   my_theme(
-    
+    size = 24
   )
 }
 
-#' @name theme_figure
+#' theme_figure
 #' 
 #' @return my_theme with size modifications for figures
 #' 

@@ -1,6 +1,7 @@
-#' @name remove_x_spine
+#' remove_x_spine
 #'
 #' @return a ggplot theme to remove the x spine
+#' @export
 
 remove_x_spine <- function(...) {
   remove.x.spine.theme <- theme(
@@ -12,9 +13,10 @@ remove_x_spine <- function(...) {
   return(remove.x.spine.theme)
 }
 
-#' @name remove_spines
+#' remove_spines
 #'
 #' @return a ggplot theme to remove the spines
+#' @export
 
 remove_spines <- function(...) {
   remove.spine.theme <- theme(
@@ -26,7 +28,7 @@ remove_spines <- function(...) {
   return(remove.spine.theme)
 }
 
-#' @name plot_umap
+#' plot_umap
 #'
 #' Plots a 2D UMAP with the aesthetics that I like
 #'
@@ -39,11 +41,11 @@ remove_spines <- function(...) {
 #' @param fix_coords whether or not to use `coord_fixed`, TRUE by default
 #' @param label bool specifying whether to label the color category
 #' @param textsize int specifying textsize; only applies if label=TRUE
-#' @param label_points
 #' @param label_groups character vector specifying additional groups to label
 #' @param repel_min_segment_length min segment length to pass to `geom_text_repel`
 #'
 #' @return ggplot2 object
+#' @export
 
 plot_umap <- function(.tbl, x = UMAP_1, y = UMAP_2,
                       color_str = "value",
@@ -102,11 +104,12 @@ plot_umap <- function(.tbl, x = UMAP_1, y = UMAP_2,
   return(p)
 }
 
-#' @name plot_proportion
+#' plot_proportion
 #' @param .tbl a tibble
 #' @param x symbol designating column of tibble with group information
 #' @param y symbol designating column of tibble with proportion values
-#' @param fill
+#' @param fill symbol designating fill color
+#' 
 #' @return ggplot object
 
 plot_proportion <- function(.tbl, x = group, y = prop, fill = clusters) {
@@ -123,7 +126,7 @@ plot_proportion <- function(.tbl, x = group, y = prop, fill = clusters) {
 }
 
 
-#' @name make_galaxy_plot
+#' make_galaxy_plot
 #'
 #' Pretty sure Kevin Bi deserve the credit for this code but I've messed
 #' around with it some too
@@ -135,6 +138,7 @@ plot_proportion <- function(.tbl, x = group, y = prop, fill = clusters) {
 #' @param y string designating variable to plot on y-axis
 #'
 #' @return ggplot object
+#' @export
 
 make_galaxy_plot <- function(.tbl,
                              sample_n = 800,
@@ -177,13 +181,14 @@ make_galaxy_plot <- function(.tbl,
   return(retplot)
 }
 
-#' @name plot_violin
+#' plot_violin
 #'
 #' @param .tbl a data frame or tibble with x and y coordinates
 #' @param var variable to plot as symbol
 #' @param group group to plot as symbol
 #'
 #' @return ggplot object
+#' @export
 
 plot_violin <- function(.tbl, group, var, pt.size = 0, pt.stroke = 1) {
   var <- enquo(var)
@@ -204,7 +209,7 @@ plot_violin <- function(.tbl, group, var, pt.size = 0, pt.stroke = 1) {
   return(p)
 }
 
-#' @name plot_two_groups
+#' plot_two_groups
 #'
 #' @param .tbl a data frame or tibble
 #' @param var variable to plot as symbol
@@ -213,6 +218,7 @@ plot_violin <- function(.tbl, group, var, pt.size = 0, pt.stroke = 1) {
 #' Use with fig.asp = 2, fig.width = 2.
 #'
 #' @return ggplot object
+#' @export
 
 plot_two_groups <- function(.tbl,
                             group,
@@ -268,7 +274,7 @@ plot_two_groups <- function(.tbl,
           axis.title.x = element_blank())
 }
 
-#' @name plot_volcano
+#' plot_volcano
 #' Generates a pretty volcano plot, by default takes in dataframes
 #' formatted like the output of Seurat::FindMarkers
 #' Pretty by my standards
@@ -280,6 +286,7 @@ plot_two_groups <- function(.tbl,
 #' length 2, which will set two cutoffs on the left and the right side of the
 #' volcano
 #' @return a ggplot2 object displaying a pretty volcano plot
+#' @export
 
 plot_volcano <- function(volcano_df,
                          var_fc = avg_log2FC,
@@ -356,34 +363,5 @@ plot_volcano <- function(volcano_df,
     labs(caption = "genes above dashed horizontal lines are labelled")
   
   return(p)
-}
-
-
-plot_gsea_curve <- function(leg_df,
-                            group_var,
-                            pt_size = 2,
-                            pt_alpha = 0.8,
-                            line_size = 1) {
-  group_var <- enquo(group_var)
-  curve_plot <- leg_df %>%
-    filter(in_gs) %>%
-    ggplot() +
-    aes(rank, running_es) +
-    geom_point(aes(color = !!group_var),
-               size = pt_size, alpha = pt_alpha) +
-    geom_hline(yintercept = 0, size = line_size) +
-    xlim(min(leg_df$rank), max(leg_df$rank)) +
-    ylab("Running ES") +
-    scale_x_continuous(expand = c(0, 0)) +
-    theme(
-      axis.line.x = element_blank(),
-      axis.text.x = element_blank(),
-      axis.ticks.x = element_blank(),
-      axis.title.x = element_blank(),
-      legend.position = "top"
-    )
-  
-  return(curve_plot)
-  
 }
 

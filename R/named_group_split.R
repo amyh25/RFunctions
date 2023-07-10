@@ -1,4 +1,4 @@
-#' @name named_group_split
+#' named_group_split
 #' credit goes to romainfrancois on https://github.com/tidyverse/dplyr/issues/4223
 #' @param .tbl a tibble
 #' @return a tibble

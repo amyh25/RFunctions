@@ -2,16 +2,18 @@
 % Please edit documentation in R/named_group_split.R
 \name{named_group_split}
 \alias{named_group_split}
-\title{Reads function given output directory}
+\title{named_group_split
+credit goes to romainfrancois on https://github.com/tidyverse/dplyr/issues/4223}
 \usage{
-named_group_split(.tbl, ...)
+named_group_split(.tbl, sep_str = " / ", ...)
 }
 \arguments{
-\item{.tbl}{Input tibble}
+\item{.tbl}{a tibble}
 }
 \value{
-A list of tibbles
+a tibble
 }
 \description{
-A wrapper for dplyr group_split which adds names to the resultant list.
+named_group_split
+credit goes to romainfrancois on https://github.com/tidyverse/dplyr/issues/4223
 }

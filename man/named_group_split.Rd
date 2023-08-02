@@ -5,7 +5,7 @@
 \title{named_group_split
 credit goes to romainfrancois on https://github.com/tidyverse/dplyr/issues/4223}
 \usage{
-named_group_split(.tbl, sep_str = " / ", ...)
+named_group_split(.tbl, ..., sep_str = " / ")
 }
 \arguments{
 \item{.tbl}{a tibble}

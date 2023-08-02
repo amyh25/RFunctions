@@ -111,6 +111,7 @@ plot_umap <- function(.tbl, x = UMAP_1, y = UMAP_2,
 #' @param fill symbol designating fill color
 #' 
 #' @return ggplot object
+#' @export
 
 plot_proportion <- function(.tbl, x = group, y = prop, fill = clusters) {
   x <- enquo(x)

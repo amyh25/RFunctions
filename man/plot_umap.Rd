@@ -15,7 +15,8 @@ plot_umap(
   label = FALSE,
   textsize = 3,
   label_groups = NULL,
-  repel_min_segment_length = 0.1
+  repel_min_segment_length = 0.1,
+  arrange_points = TRUE
 )
 }
 \arguments{
@@ -38,6 +39,8 @@ plot_umap(
 \item{label_groups}{character vector specifying additional groups to label}
 
 \item{repel_min_segment_length}{min segment length to pass to \code{geom_text_repel}}
+
+\item{arrange_points}{whether or not to arrange the points so the highest value ones are on top}
 
 \item{color}{the color to show}
 }

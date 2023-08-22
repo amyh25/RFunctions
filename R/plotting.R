@@ -43,6 +43,7 @@ remove_spines <- function(...) {
 #' @param textsize int specifying textsize; only applies if label=TRUE
 #' @param label_groups character vector specifying additional groups to label
 #' @param repel_min_segment_length min segment length to pass to `geom_text_repel`
+#' @param arrange_points whether or not to arrange the points so the highest value ones are on top
 #'
 #' @return ggplot2 object
 #' @export
@@ -55,9 +56,14 @@ plot_umap <- function(.tbl, x = UMAP_1, y = UMAP_2,
                       label = FALSE,
                       textsize = 3,
                       label_groups = NULL,
-                      repel_min_segment_length = 0.1) {
+                      repel_min_segment_length = 0.1, 
+                      arrange_points = TRUE) {
   x <- enquo(x)
   y <- enquo(y)
+  if (arrange_points) {
+    .tbl <- .tbl %>% 
+      arrange(get(color_str))
+  }
   p <- ggplot(.tbl) +
     aes(!!x,!!y) +
     geom_scattermore(aes(color = get(color_str)),
